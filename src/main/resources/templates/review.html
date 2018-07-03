@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html  xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>Review</title>
+</head>
+
+<body>
+    <div class="center">
+        <h1>U.S. Kit Car Company Review</h1>
+
+        <section th:each="review: ${reviews}">
+            <h2 th:text="${review.title}"></h2>
+            <p><strong>Category:</strong><span th:text="' '+ ${review.category}"></span></p>
+            <p th:text="${review.content}"></p>
+            <a th:href="@{${review.CompanyUrl}}"><span th:text="${review.CompanyUrl}" /></a>
+            <img class="center" th:src="@{${review.ImageUrl}}" />
+            <p class="center"><a href="http://localhost:8080/show-reviews">Back to home</a></p>
+            
+        </section>
+        <footer>
+            <p>&copy; 2018 Anthony J. DeMeglio </p>
+        </footer>
+    </div>
+</body>
+</html>

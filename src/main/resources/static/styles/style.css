@@ -1,0 +1,29 @@
+* {
+    font-family: Helvetica, Arial, sans-serif;
+}
+.center {
+    margin: auto;
+    width: 80%;
+}
+h1,h2 {
+    color: black;
+    width: 90%;
+}
+
+p,ul {
+    color: rgb(35, 35, 35);
+}
+
+footer {
+    font-size: 75%;
+    text-align: center;
+}
+
+img {
+    display: block;
+    padding: 10px;
+}
+
+p.center {
+    text-align: center;
+}
