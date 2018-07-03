@@ -77,4 +77,4 @@ For instance variables that hold things like descriptions, which may be longer t
 @Lob
 private String description;
 ```
-See [LOBs, BLOBs, CLOBs and Seialization](https://en.wikibooks.org/wiki/Java_Persistence/Basic_Attributes#LOBs.2C_BLOBs.2C_CLOBs_and_Serialization) in the Java Persistence wikibook.
+See [LOBs, BLOBs, CLOBs and Serialization](https://en.wikibooks.org/wiki/Java_Persistence/Basic_Attributes#LOBs.2C_BLOBs.2C_CLOBs_and_Serialization) in the Java Persistence wikibook.
