@@ -23,8 +23,8 @@ Also, we’re going to JPA-enable your site so that it writes/reads from an H2 d
 Feel free to use appropriate class names other than `Review` and `Category`, but these instructions will refer to `Review` and `Category`.
 
   * Add the following dependencies to `build.gradle` (or use [Spring Initializr](https://start.spring.io/) to create a new `build.gradle`)
-    * [ ] JPA (spring-boot-starter-data-jpa)
-    * [ ] H2
+    * [x] JPA (spring-boot-starter-data-jpa)
+    * [x] H2
   * Create a `Category` class that:
     * [ ] is a JPA entity.
     * [ ] contains an instance variable referencing the `Review`s it contains.

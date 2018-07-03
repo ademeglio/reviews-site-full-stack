@@ -1,4 +1,4 @@
-package org.WeCanCodeIT.reviews_site;
+package org.WeCanCodeIT.reviews_site_full_stack;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

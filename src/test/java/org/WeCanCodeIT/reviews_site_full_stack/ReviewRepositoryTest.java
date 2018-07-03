@@ -1,4 +1,4 @@
-package org.WeCanCodeIT.reviews_site;
+package org.WeCanCodeIT.reviews_site_full_stack;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.containsInAnyOrder;
