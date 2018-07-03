@@ -36,7 +36,7 @@ public class ReviewsControllerMockMvcTest {
 	private Review secondReview;
 	
 	@MockBean
-	private ReviewRepository repository;
+	private OldReviewRepository repository;
 	
 	// Testing for all reviews
 	@Test

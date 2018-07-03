@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ReviewController {
 	@Resource
-	ReviewRepository reviewRepo;
+	OldReviewRepository reviewRepo;
 	
 	@RequestMapping("/show-reviews")
 	public String findAllReviews(Model model) { 

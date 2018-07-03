@@ -8,9 +8,9 @@ import java.util.Collection;
 
 import org.junit.Test;
 
-public class ReviewRepositoryTest {
+public class OldReviewRepositoryTest {
 
-	ReviewRepository underTest;
+	OldReviewRepository underTest;
 	
 	private Long reviewId = 1L;
 	private Review review = new Review(reviewId, "review title", "url", "category", "content","coUrl1");
@@ -22,7 +22,7 @@ public class ReviewRepositoryTest {
 	@Test
 	public void shouldFindAReview() {
 		// Setup
-		underTest = new ReviewRepository(review);
+		underTest = new OldReviewRepository(review);
 		// Act
 		Review result = underTest.findOne(reviewId);
 		// Assert
@@ -32,7 +32,7 @@ public class ReviewRepositoryTest {
 	@Test
 	public void shouldFindASecondReview() {
 		// Setup
-		underTest = new ReviewRepository(secondReview);
+		underTest = new OldReviewRepository(secondReview);
 		// Act
 		Review result = underTest.findOne(secondReviewId);
 		// Assert
@@ -42,7 +42,7 @@ public class ReviewRepositoryTest {
 	@Test
 	public void shouldFindAllReviews() {
 		// Setup
-		underTest = new ReviewRepository(review, secondReview);
+		underTest = new OldReviewRepository(review, secondReview);
 		// Act
 		Collection<Review> result = underTest.findAll();
 		// Assert
