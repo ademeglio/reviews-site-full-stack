@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>Review Categories</title>
+</head>
+
+<body>
+   <div class="center">
+
+        <h1>Review Categories</h1>
+
+        <section id="intro">
+            <p>
+               Below is a list of categories that our reviews can be associated with.
+            </p>
+        </section>
+        
+        <section th:each ="category: ${categories}">
+            <ul>
+                <li>
+                    <a th:href="@{/category(id=${category.id})}" th:text="${category.name}"></a>
+                </li>
+            </ul>
+        </section>
+        <footer class="center">
+            <p class="center"><a href="http://localhost:8080/show-reviews">Back to Reviews</a></p>
+            <p>&copy; 2018 Anthony J. DeMeglio </p>
+        </footer>
+    </div>
+
+</body>
+</html>

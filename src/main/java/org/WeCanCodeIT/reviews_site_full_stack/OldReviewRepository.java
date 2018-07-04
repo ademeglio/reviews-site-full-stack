@@ -6,7 +6,9 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
-@Repository
+/* This is the original ReviewRepository which is not an interface. This data will be deleted after it is copied into a populator() */
+
+
 public class OldReviewRepository {
 
 	private Map<Long, Review> reviewList = new HashMap<>();
