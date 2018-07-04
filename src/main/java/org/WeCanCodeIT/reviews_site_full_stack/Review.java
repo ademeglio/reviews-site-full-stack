@@ -1,11 +1,9 @@
 package org.WeCanCodeIT.reviews_site_full_stack;
 
-import java.util.Collection;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 
 @Entity
@@ -21,18 +19,19 @@ public class Review {
 	private String content; // Review content
 	private String companyUrl; // Web site of company being reviewed
 	
-	@OneToMany(mappedBy = "review")
-	private Collection<Category> categories; // Review category
+	@ManyToOne
+	private Category category; // Review category
 
 	//Constructor
-	protected Review() { }
+	protected Review() { } //JPA Default Constructor
 	
 	public Review(String reviewTitle, String reviewImageUrl, 
-			String reviewContent, String companyUrl) {
+			String reviewContent, String companyUrl, Category category) {
 		this.title = reviewTitle;
 		this.imageUrl = reviewImageUrl;
 		this.content = reviewContent;
 		this.companyUrl = companyUrl;
+		this.category = category;
 	}
 
 	// Getters
@@ -56,8 +55,8 @@ public class Review {
 		return companyUrl;
 	}
 
-	public Collection<Category> getCategories() {
-		return categories;
+	public Category getCategory() {
+		return category;
 	}
 
 	// hashCode() & equals() for entity id

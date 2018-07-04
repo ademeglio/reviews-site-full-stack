@@ -5,6 +5,7 @@ import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.assertThat;
 
+import java.util.Collection;
 import java.util.Optional;
 
 import javax.annotation.Resource;
@@ -24,10 +25,13 @@ public class JPAMappingsTest {
 	private TestEntityManager entityManager;
 	
 	@Resource
-	CategoryRepository categoryRepo;
+	private CategoryRepository categoryRepo;
 	
 	@Resource
-	ReviewRepository reviewRepo;
+	private ReviewRepository reviewRepo;
+	
+	
+	
 	
 	// Category Tests
 	
@@ -55,10 +59,13 @@ public class JPAMappingsTest {
 		assertThat(categoryId, is(greaterThan(0L)));
 	}
 	
+	// Review Tests
+	
 	@Test
 	public void shouldSaveAndLoadReview() {
+		Category replica = categoryRepo.save(new Category("replicas"));
 		Review review = reviewRepo.save(new Review("reviewTitle", "reviewImageUrl",
-				"reviewContent", "reviewedCompanyUrl"));
+				"reviewContent", "reviewedCompanyUrl", replica));
 		long reviewId = review.getId();
 		
 		entityManager.flush();
@@ -71,19 +78,33 @@ public class JPAMappingsTest {
 	
 	@Test
 	public void shouldEstablishCategoryToReviewRelationship() {
+		Category replica = categoryRepo.save(new Category("replicas"));
 		
 		Review review = reviewRepo.save(new Review("reviewTitle", "reviewImageUrl",
-				"reviewContent", "reviewedCompanyUrl"));
+				"reviewContent", "reviewedCompanyUrl", replica));
 		long reviewId = review.getId();
-		
-		Category replica = categoryRepo.save(new Category("replicas", review));
 		
 		entityManager.flush();
 		entityManager.clear();
 		
 		Optional<Review> result = reviewRepo.findById(reviewId);
 		review = result.get();
-		assertThat(review.getCategories(), containsInAnyOrder(replica));
+		assertThat(review.getCategory(), is(replica));
 		
 	} 
-}
+	
+	@Test
+	public void shouldFindReviewsFoCategory() {
+		Category replica = categoryRepo.save(new Category("replicas"));
+		
+		Review review1 = reviewRepo.save(new Review("reviewTitle1", "reviewImageUrl",
+				"reviewContent", "reviewedCompanyUrl", replica));
+		Review review2 = reviewRepo.save(new Review("reviewTitle2", "reviewImageUrl",
+				"reviewContent", "reviewedCompanyUrl", replica));
+		
+		Collection<Review> reviewsForCategory = reviewRepo.findByCategoryContains(replica);
+		assertThat(reviewsForCategory, containsInAnyOrder(review1, review2));
+	}
+
+	
+} // End JPAMappingsTest()

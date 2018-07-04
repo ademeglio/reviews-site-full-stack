@@ -1,9 +1,11 @@
 package org.WeCanCodeIT.reviews_site_full_stack;
 
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Category {
@@ -13,11 +15,11 @@ public class Category {
 	private long id;
 	private String name;
 	
-	@ManyToOne
-	private Review review;
+	@OneToMany(mappedBy = "category")
+	private Collection<Review> reviews;
 
 	// Constructors
-	protected Category() {}
+	protected Category() {} //JPA Default Constructor
 	
 	public Category(String name) {
 		this.name = name;
@@ -32,8 +34,8 @@ public class Category {
 		return id;
 	}
 	
-	public Review getReview() {
-		return review;
+	public Collection<Review> getReviews() {
+		return reviews;
 	}
 
 	// hashCode() & equals() for entity id
