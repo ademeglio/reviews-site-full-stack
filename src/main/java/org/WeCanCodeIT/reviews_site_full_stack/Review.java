@@ -1,11 +1,16 @@
 package org.WeCanCodeIT.reviews_site_full_stack;
 
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Arrays;
+
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 
@@ -28,17 +33,21 @@ public class Review {
 	
 	@ManyToOne
 	private Category category; // Review category
+	
+	@ManyToMany
+	private Collection<Tag>	tags;
 
 	//Constructor
 	protected Review() { } //JPA Default Constructor
 	
 	public Review(String reviewTitle, String reviewImageUrl, 
-			String reviewContent, String companyUrl, Category category) {
+			String reviewContent, String companyUrl, Category category, Tag...tags) {
 		this.title = reviewTitle;
 		this.imageUrl = reviewImageUrl;
 		this.content = reviewContent;
 		this.companyUrl = companyUrl;
 		this.category = category;
+		this.tags = new HashSet<>(Arrays.asList(tags));
 	}
 
 	// Getters
@@ -64,6 +73,10 @@ public class Review {
 
 	public Category getCategory() {
 		return category;
+	}
+	
+	public Collection<Tag> getTags() {
+		return tags;
 	}
 
 	// hashCode() & equals() for entity id
@@ -91,6 +104,8 @@ public class Review {
 			return false;
 		return true;
 	}
+
+
 	
 
 	
