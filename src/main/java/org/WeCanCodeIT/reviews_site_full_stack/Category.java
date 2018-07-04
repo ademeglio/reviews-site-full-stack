@@ -2,9 +2,12 @@ package org.WeCanCodeIT.reviews_site_full_stack;
 
 import java.util.Collection;
 
+import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -15,19 +18,28 @@ public class Category {
 	private long id;
 	private String name;
 	
+	@Basic(fetch=FetchType.LAZY)
+    @Lob
+	private String description;
+	
 	@OneToMany(mappedBy = "category")
 	private Collection<Review> reviews;
 
 	// Constructors
 	protected Category() {} //JPA Default Constructor
 	
-	public Category(String name) {
+	public Category(String name, String description) {
 		this.name = name;
+		this.description = description;
 	}
 	
 	// Getters
 	public String getName() {
 		return name;
+	}
+	
+	public String getDescription() {
+		return description;
 	}
 	
 	public long getId() {
