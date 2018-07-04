@@ -94,7 +94,7 @@ public class JPAMappingsTest {
 	} 
 	
 	@Test
-	public void shouldFindReviewsFoCategory() {
+	public void shouldFindReviewsForCategory() {
 		Category replica = categoryRepo.save(new Category("replicas"));
 		
 		Review review1 = reviewRepo.save(new Review("reviewTitle1", "reviewImageUrl",
@@ -102,7 +102,7 @@ public class JPAMappingsTest {
 		Review review2 = reviewRepo.save(new Review("reviewTitle2", "reviewImageUrl",
 				"reviewContent", "reviewedCompanyUrl", replica));
 		
-		Collection<Review> reviewsForCategory = reviewRepo.findByCategoryContains(replica);
+		Collection<Review> reviewsForCategory = reviewRepo.findByCategory(replica);
 		assertThat(reviewsForCategory, containsInAnyOrder(review1, review2));
 	}
 
