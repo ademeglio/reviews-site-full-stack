@@ -107,7 +107,7 @@ public class JPAMappingsTest {
 		assertThat(reviewsForCategory, containsInAnyOrder(review1, review2));
 	}
 	
-	// Test Tags
+	// Tags Test
 	
 	@Test
 	public void shouldSaveAndLoadTags() {
