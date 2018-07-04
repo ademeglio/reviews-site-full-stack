@@ -1,8 +1,11 @@
 package org.WeCanCodeIT.reviews_site_full_stack;
 
+import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 
@@ -16,7 +19,11 @@ public class Review {
 	
 	private String title; // Review Title
 	private String imageUrl; // Review URL Link to static image of object being reviewed
+	
+	@Basic(fetch=FetchType.LAZY)
+    @Lob
 	private String content; // Review content
+	
 	private String companyUrl; // Web site of company being reviewed
 	
 	@ManyToOne
