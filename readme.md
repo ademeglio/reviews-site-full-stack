@@ -26,13 +26,13 @@ Feel free to use appropriate class names other than `Review` and `Category`, but
     * [x] JPA (spring-boot-starter-data-jpa)
     * [x] H2
   * Create a `Category` class that:
-    * [ ] is a JPA entity.
-    * [ ] contains an instance variable referencing the `Review`s it contains.
-    * [ ] configures an appropriate JPA relationship to its reviews.
+    * [x] is a JPA entity.
+    * [x] contains an instance variable referencing the `Review`s it contains.
+    * [x] configures an appropriate JPA relationship to its reviews.
   * Update the `Review` class such that:
-    * [ ] it is a JPA entity.
-    * [ ] configures a JPA relationship to its associated category.
-    * [ ] allows for a description/content/body longer than 255 characters.
+    * [x] it is a JPA entity.
+    * [x] configures a JPA relationship to its associated category.
+    * [x] allows for a description/content/body longer than 255 characters.
   * Update your view (templates/html/css) such that:
     * [ ] there is a page that lists review categories, each of which links to the (details) page for a specific category.
     * [ ] there is a page that lists the reviews for a chosen category, each of which links to the (details) page for a specific review.
