@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="styles/style.css" />
-    <title th:each="${review.title}"></title>
+    <title>Kit Car Review</title>
 </head>
 
 <body>
@@ -15,10 +15,10 @@
             <p th:text="${review.content}"></p>
             <a th:href="@{${review.CompanyUrl}}"><span th:text="${review.CompanyUrl}" /></a>
             <img class="center" th:src="@{${review.ImageUrl}}" />
-            <p><strong>Category:</strong><span th:text="' '+ ${review.category}"></span></p>
-            <div th:each="tag: ${review.tag}">
+            <p><strong>Category:</strong><span th:text="' '+ ${review.category.name}"></span></p>
+           <!-- <div th:each="tag: ${review.tag}">
                 <span th:text="tag.name"></span>
-            </div>
+            </div>-->
             
             
         </section>
