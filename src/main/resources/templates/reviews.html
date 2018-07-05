@@ -21,21 +21,21 @@
 
             <p>
                 As I got older, I had less time time to work on cars but still enjoyed cars and had gotten into <a href="https://en.wikipedia.org/wiki/Autocross" target="_blank" >autocrossing</a>. 
-                Sometime during my senior year of college one of my magazines introduced me to a small company in <em>Wareham, MA</em> called 
+                Sometime during my senior year of college one of my car magazines introduced me to a small company in <em>Wareham, MA</em> called 
                 <Strong>Factory Five Racing</Strong>. They are a component car manufacturer (AKA Kit Car) that make several different
-                model cars that are replicas of older cars or original designs based around the concept of using a single donor car for main 
-                components to be used in a specially designed and built frame along with other custom components. You get the parts and you get to put it all together.
+                model cars that are replicas of older cars, such as the classic Cobra, or original designs. The itch was there for many years before I was finally able to put aside some funds to purchased a Factory Five Racing 818C to build for myself and I can't wait to start construction! The 818C is an original design based around using a Subaru Impreza as the donor.
             </p>
 
             <p>
-                Not all Kit Car companies are the same. While, I confess I'm partial to Factory Five Racing, I recently purchased an 818C to build
-                and I can't wait to start construction!
+                Not all Kit Car companies are the same but the concept is. Kits are based on using either multiple donor sources or single donor source for key components such as engine and drive train.  These are used in conjunction with a specially designed and built frame along with other custom components. In addition, body panels are pre-fabricated. You get the parts and you get to put it all together
+                and customize the car to your own style and performace. If you aren't into building, there are companies that can build the car to
+                your liking and you can still have a custom one of a kind car for your collection.
             </p>
 
             <h2>Below are some reviews of Kit Car Companies based in the United States.</h2>
         </section>
         
-        <section th:each ="review: ${reviews}">
+        <section id="reviewList" th:each ="review: ${reviews}">
             <ul>
                 <li>
                     <a th:href="@{/review(id=${review.id})}" th:text="${review.title}"></a>
