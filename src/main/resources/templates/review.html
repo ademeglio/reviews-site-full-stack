@@ -16,9 +16,8 @@
             <a th:href="@{${review.CompanyUrl}}"><span th:text="${review.CompanyUrl}" /></a>
             <img class="center" th:src="@{${review.ImageUrl}}" />
             <p><strong>Category:</strong><span th:text="' '+ ${review.category.name}"></span></p>
-           <!-- <div th:each="tag: ${review.tag}">
-                <span th:text="tag.name"></span>
-            </div>-->
+            <span th:each="tag: ${review.tags}" th:text="' ' + ${tag.name}"></span>
+            
             
             
         </section>
