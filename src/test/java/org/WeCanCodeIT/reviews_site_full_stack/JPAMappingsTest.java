@@ -38,7 +38,7 @@ public class JPAMappingsTest {
 	
 	@Test
 	public void shouldSaveAndLoadCategory() {
-		Category category = categoryRepo.save(new Category("category"));
+		Category category = categoryRepo.save(new Category("category", "description"));
 		long categoryId = category.getId();
 		
 		entityManager.flush();
@@ -51,7 +51,7 @@ public class JPAMappingsTest {
 	
 	@Test
 	public void shouldGenerateCategoryId() {
-		Category category = categoryRepo.save(new Category("category"));
+		Category category = categoryRepo.save(new Category("category", "description"));
 		long categoryId = category.getId();
 		
 		entityManager.flush();
@@ -64,7 +64,7 @@ public class JPAMappingsTest {
 	
 	@Test
 	public void shouldSaveAndLoadReview() {
-		Category replica = categoryRepo.save(new Category("replicas"));
+		Category replica = categoryRepo.save(new Category("replicas", "description"));
 		Review review = reviewRepo.save(new Review("reviewTitle", "reviewImageUrl",
 				"reviewContent", "reviewedCompanyUrl", replica));
 		long reviewId = review.getId();
@@ -79,7 +79,7 @@ public class JPAMappingsTest {
 	
 	@Test
 	public void shouldEstablishCategoryToReviewRelationship() {
-		Category replica = categoryRepo.save(new Category("replicas"));
+		Category replica = categoryRepo.save(new Category("replicas", "description"));
 		
 		Review review = reviewRepo.save(new Review("reviewTitle", "reviewImageUrl",
 				"reviewContent", "reviewedCompanyUrl", replica));
@@ -96,7 +96,7 @@ public class JPAMappingsTest {
 	
 	@Test
 	public void shouldFindReviewsForCategory() {
-		Category replica = categoryRepo.save(new Category("replicas"));
+		Category replica = categoryRepo.save(new Category("replicas", "description"));
 		
 		Review review1 = reviewRepo.save(new Review("reviewTitle1", "reviewImageUrl",
 				"reviewContent", "reviewedCompanyUrl", replica));
@@ -139,7 +139,7 @@ public class JPAMappingsTest {
 		Tag tag1 = tagRepo.save(new Tag("tag1"));
 		Tag tag2 = tagRepo.save(new Tag("tag2"));
 		
-		Category replica = categoryRepo.save(new Category("replicas"));
+		Category replica = categoryRepo.save(new Category("replicas", "description"));
 		
 		Review review1 = reviewRepo.save(new Review("reviewTitle1", "reviewImageUrl",
 				"reviewContent", "reviewedCompanyUrl", replica, tag1, tag2));
@@ -157,7 +157,7 @@ public class JPAMappingsTest {
 	public void shouldFindReviewsForTag() {
 		Tag tag1 = tagRepo.save(new Tag("tag1"));
 		
-		Category replica = categoryRepo.save(new Category("replicas"));
+		Category replica = categoryRepo.save(new Category("replicas", "description"));
 		
 		Review review1 = reviewRepo.save(new Review("reviewTitle1", "reviewImageUrl",
 				"reviewContent", "reviewedCompanyUrl", replica, tag1));
@@ -174,7 +174,7 @@ public class JPAMappingsTest {
 		Tag tag1 = tagRepo.save(new Tag("tag1"));
 		long tagId = tag1.getId();
 		
-		Category replica = categoryRepo.save(new Category("replicas"));
+		Category replica = categoryRepo.save(new Category("replicas", "description"));
 		
 		Review review1 = reviewRepo.save(new Review("reviewTitle1", "reviewImageUrl",
 				"reviewContent", "reviewedCompanyUrl", replica, tag1));
