@@ -43,7 +43,7 @@ Feel free to use appropriate class names other than `Review` and `Category`, but
 #### Tags
   * [x] Create a `Tag` entity.
   * [x] Update `Review` so that it can have tags associated with it. A review can have many tags, a tag can be assigned to many reviews.
-  * [ ] Display tags on the review details page.
+  * [x] Display tags on the review details page.
   * [ ] Create a page that displays links to all of the reviews associated with a given tag.
 
 #### Stretchier
