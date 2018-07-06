@@ -17,9 +17,6 @@
             <img class="center" th:src="@{${review.ImageUrl}}" />
             <p><strong>Category:</strong><span th:text="' '+ ${review.category.name}"></span></p>
             <span th:each="tag: ${review.tags}" th:text="' ' + ${tag.name}"></span>
-            
-            
-            
         </section>
         <footer>
             <p class="center"><a href="http://localhost:8080/show-reviews">Back to Home</a></p>
