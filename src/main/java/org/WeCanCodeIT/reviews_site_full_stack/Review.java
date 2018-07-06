@@ -2,6 +2,7 @@ package org.WeCanCodeIT.reviews_site_full_stack;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Arrays;
 
 import javax.persistence.Basic;
@@ -79,6 +80,15 @@ public class Review {
 		return tags;
 	}
 
+	// Methods
+	public void addTag(Tag tag) {
+		this.tags.add(tag);
+	}
+	
+	public void deleteTag(Optional<Tag> tag) {  //  TODO Is this correct
+		this.tags.remove(tag);
+	}
+	
 	// hashCode() & equals() for entity id
 	@Override
 	public int hashCode() {

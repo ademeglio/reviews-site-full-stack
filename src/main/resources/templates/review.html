@@ -22,6 +22,21 @@
             <div id="tags">
                 <img src="./images/tagIcon.png"/>
                 <p>Tags: <span th:each="tag: ${review.tags}" th:text="' ' + ${tag.name}"></span> </p>
+
+                <!-- Form to add newly created tags to a review -->
+                <form method="POST" action="/new-tag">
+                    <input type="text" name="tagName" placeholder="Enter New Tag" />
+                    <input type="hidden" name="reviewId" th:value="${review.id}" />
+                    <input type="submit" value="Create &amp; Add Tag" />
+                </form>
+
+                <!-- Form to remove a tag from the review -->
+                <form method="POST" action="/remove-tag-from-review">
+                    <input type="text" name="tagName" placeholder="Enter Tag Name" />
+                    <input type="hidden" name="reviewId" th:value="${review.id}" />
+                    <input type="submit" value="Remove Tag" />
+                </form>
+
             </div>
         </section>
 

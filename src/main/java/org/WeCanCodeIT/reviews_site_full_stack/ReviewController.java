@@ -6,8 +6,10 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 public class ReviewController {
@@ -72,6 +74,44 @@ public class ReviewController {
 		return "tags";
 	}
 	
+	// Add a newly created tag directly to a specific review using a form.
+	@PostMapping("/new-tag")
+	public RedirectView createTagForReview(
+		@RequestParam(value="tagName") String tagName,
+		@RequestParam(value="reviewId") Long reviewId,
+		Model model) {
+		
+		Optional<Review> reviewResult = reviewRepo.findById(reviewId);
+		
+		if (reviewResult.isPresent()) {
+			Tag createdTag = tagRepo.save(new Tag(tagName));
+			Review review = reviewResult.get();
+			review.addTag(createdTag);
+			reviewRepo.save(review);
+		}
+
+		return new RedirectView("/review?id=" + reviewId);
+	}
+	
+	@PostMapping("/remove-tag-from-review")
+	public RedirectView removeTagForReview(
+			@RequestParam(value="tagName") String tagName,
+			@RequestParam(value="reviewId") Long reviewId,
+			Model model) {
+			
+			Optional<Review> reviewResult = reviewRepo.findById(reviewId);
+			
+			if (reviewResult.isPresent()) {
+				Review review = reviewResult.get();
+				
+				Optional<Tag> tag = tagRepo.findByName(tagName);  // TODO - Fix: when deleting duplicate tags, you get an error because it finds two by name
+				
+				review.deleteTag(tag);
+				reviewRepo.save(review);
+			}
+			
+			return new RedirectView("/review?id=" + reviewId);
+	}
 	
 	
 } // End ReviewController()
