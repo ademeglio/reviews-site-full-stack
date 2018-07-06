@@ -3,23 +3,46 @@
 <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="styles/style.css" />
-    <title>Review Tags</title>
+    <title>Tag</title>
 </head>
 
 <body>
-    <div class="center">
-        <h1>Review Tags</h1>
+    <main class="center">
+        
+        <h1>Tag</h1>
 
         <section th:each="tag: ${tags}">
             <h2 th:text="${tag.name}"></h2>
-            
-            
-            
         </section>
-        <footer>
-            <p class="center"><a href="http://localhost:8080/show-reviews">Back to Reviews</a></p>
+
+        <section th:each="review: ${tags.reviews}">
+            <h2>Associated Reviews</h2>
+            <a th:href=@{/review(id=$review.id})} th:text:="${review.name}"></a>
+        </section>
+
+    </main>
+
+    <div id="navContainer">
+            <div class="menuContainer">
+                <div id="menuBarsContainer" onClick="toggleMenu(this)">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+            </div>
+        
+            <nav id="mainNav">
+                <div>
+                    <a href="./show-reviews">Reviews</a>
+                    <a href="/show-categories">Categories</a>
+                    <a href="/show-tags">Tags</a>
+                </div>
+            </nav>
+        </div>
+                
+        <footer class="center">
             <p>&copy; 2018 Anthony J. DeMeglio </p>
         </footer>
-    </div>
+
 </body>
 </html>

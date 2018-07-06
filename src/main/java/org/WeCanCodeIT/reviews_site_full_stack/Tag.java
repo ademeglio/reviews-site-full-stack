@@ -34,6 +34,10 @@ public class Tag {
 	public long getId() {
 		return id;
 	}
+	
+	public Collection<Review> getReviews() {
+		return reviews;
+	}
 
 	// hashCode() & equals() for entity id
 	@Override

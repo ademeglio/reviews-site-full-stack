@@ -3,23 +3,43 @@
 <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="styles/style.css" />
-    <title>Review Categories</title>
+    <title>Category</title>
 </head>
 
 <body>
-    <div class="center">
-        <h1>Review Categories</h1>
+    <main class="center">
+
+        <h1>Category</h1>
 
         <section th:each="category: ${categories}">
             <h2 th:text="${category.name}"></h2>
-            
-            
-            
+            <p th:text="${category.description}"></p>
+            <!--TODO?: List Reviews associated to category-->
         </section>
-        <footer>
-            <p class="center"><a href="http://localhost:8080/show-reviews">Back to Reviews</a></p>
+
+    </main>
+
+    <div id="navContainer">
+            <div class="menuContainer">
+                <div id="menuBarsContainer" onClick="toggleMenu(this)">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+            </div>
+        
+            <nav id="mainNav">
+                <div>
+                    <a href="./show-reviews">Reviews</a>
+                    <a href="/show-categories">Categories</a>
+                    <a href="/show-tags">Tags</a>
+                </div>
+            </nav>
+        </div>
+                
+        <footer class="center">
             <p>&copy; 2018 Anthony J. DeMeglio </p>
         </footer>
-    </div>
+
 </body>
 </html>

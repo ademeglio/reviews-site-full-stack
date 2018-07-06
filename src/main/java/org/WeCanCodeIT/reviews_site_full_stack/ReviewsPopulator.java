@@ -24,8 +24,8 @@ public class ReviewsPopulator implements CommandLineRunner {
 				"Replicas are vehicles usually assembled from components "
 				+ "such as from a single vehicle, multiple vehicles, a kit, "
 				+ "parts, or fabricated components. The vehicle resembles "
-				+ "a vehicle of distinctive name, line-make, model or"
-				+ "type as produced by a licensed manufacturer or manufactururer"
+				+ "a vehicle of distinctive name, line-make, model or "
+				+ "type as produced by a licensed manufacturer or manufacturer "
 				+ "no longer in business."));
 		Category kitVehicle = categoryRepo.save(new Category("Kits",
 				"Kits are vehicles assembed from components such as from a "
