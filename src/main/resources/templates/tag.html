@@ -14,10 +14,14 @@
                 <h1 th:text="'Tag: ' + ${tag.name}"></h1>
             </div>
             
-            <h2>Associated Reviews</h2>
+            <h3>Associated Reviews</h3>
 
             <div th:each="review: ${tags.reviews}">
-                <a th:href="@{/review(id=${review.id})}" th:text="${review.title}"></a>
+                <ul>
+                    <li>
+                        <a th:href="@{/review(id=${review.id})}" th:text="${review.title}"></a>
+                    </li>
+                </ul>
             </div>
         </section>
 

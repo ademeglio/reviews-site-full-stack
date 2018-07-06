@@ -16,8 +16,13 @@
             <p th:text="${review.content}"></p>
             <a th:href="@{${review.CompanyUrl}}"><span th:text="${review.CompanyUrl}" /></a>
             <img class="center" th:src="@{${review.ImageUrl}}" />
-            <p><strong>Category:</strong><span th:text="' '+ ${review.category.name}"></span></p>
-            <span th:each="tag: ${review.tags}" th:text="' ' + ${tag.name}"></span>
+            <p><strong>Category:</strong>
+                <a th:href="@{/category(id=${review.category.id})}" th:text="' '+ ${review.category.name}"></a>
+            </p>
+            <div id="tags">
+                <img src="./images/tagIcon.png"/>
+                <p>Tags: <span th:each="tag: ${review.tags}" th:text="' ' + ${tag.name}"></span> </p>
+            </div>
         </section>
 
     </main>

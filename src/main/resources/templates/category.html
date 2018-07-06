@@ -9,12 +9,21 @@
 <body>
     <main class="center">
 
-        <h1>Category</h1>
-
-        <section th:each="category: ${categories}">
-            <h2 th:text="${category.name}"></h2>
+        <section>
+            <div th:each="category: ${categories}">
+                <h1 th:text="'Category: ' + ${category.name}"></h1>
             <p th:text="${category.description}"></p>
-            <!--TODO?: List Reviews associated to category-->
+            </div>
+            
+            <h3>Associated Reviews</h3>
+
+            <div th:each="review : ${categories.reviews}">
+                <ul>
+                    <li>
+                        <a th:href="@{review(id=${review.id})}" th:text="${review.title}"></a>
+                    </li>
+                </ul>
+            </div>
         </section>
 
     </main>
