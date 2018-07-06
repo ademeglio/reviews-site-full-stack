@@ -8,16 +8,17 @@
 
 <body>
     <main class="center">
-        
-        <h1>Tag</h1>
 
-        <section th:each="tag: ${tags}">
-            <h2 th:text="${tag.name}"></h2>
-        </section>
-
-        <section th:each="review: ${tags.reviews}">
+        <section>
+            <div th:each="tag: ${tags}">
+                <h1 th:text="'Tag: ' + ${tag.name}"></h1>
+            </div>
+            
             <h2>Associated Reviews</h2>
-            <a th:href=@{/review(id=$review.id})} th:text:="${review.name}"></a>
+
+            <div th:each="review: ${tags.reviews}">
+                <a th:href="@{/review(id=${review.id})}" th:text="${review.title}"></a>
+            </div>
         </section>
 
     </main>
