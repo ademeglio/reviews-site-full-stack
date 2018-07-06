@@ -35,8 +35,8 @@ Feel free to use appropriate class names other than `Review` and `Category`, but
     * [x] allows for a description/content/body longer than 255 characters.
   * Update your view (templates/html/css) such that:
     * [x] there is a page that lists review categories, each of which links to the (details) page for a specific category.
-    * [ ] there is a page that lists the reviews for a chosen category, each of which links to the (details) page for a specific review.
-    * [ ] each review detail page has a link to the page for its category.
+    * [x] there is a page that lists the reviews for a chosen category, each of which links to the (details) page for a specific review.
+    * [x] each review detail page has a link to the page for its category.
 
 ### Stretch Tasks
 
