@@ -7,8 +7,8 @@
 </head>
 
 <body>
-   <div class="center">
-
+    <main class="center">
+   
         <h1>U.S. Kit Car Company Reviews</h1>
 
         <section id="intro">
@@ -41,14 +41,30 @@
                 </li>
             </ul>
         </section>
+        
+    </main>
 
-        <nav>
-            <!--TODO Create Nav Menu-->
+    <div id="navContainer">
+        <div class="menuContainer">
+            <div id="menuBarsContainer" onClick="toggleMenu(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+        </div>
+
+        <nav id="mainNav">
+            <div>
+                <a href="./show-reviews">Reviews</a>
+                <a href="/show-categories">Categories</a>
+                <a href="/show-tags">Tags</a>
+            </div>
         </nav>
-        <footer class="center">
-            <p>&copy; 2018 Anthony J. DeMeglio </p>
-        </footer>
     </div>
 
+    <footer class="center">
+        <p>&copy; 2018 Anthony J. DeMeglio </p>
+    </footer>
+    
 </body>
 </html>

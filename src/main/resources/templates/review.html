@@ -7,7 +7,8 @@
 </head>
 
 <body>
-    <div class="center">
+    <main class="center">
+
         <h1>U.S. Kit Car Company Review</h1>
 
         <section th:each="review: ${reviews}">
@@ -18,10 +19,26 @@
             <p><strong>Category:</strong><span th:text="' '+ ${review.category.name}"></span></p>
             <span th:each="tag: ${review.tags}" th:text="' ' + ${tag.name}"></span>
         </section>
-        <footer>
-            <p class="center"><a href="http://localhost:8080/show-reviews">Back to Home</a></p>
-            <p>&copy; 2018 Anthony J. DeMeglio </p>
-        </footer>
+
+    </main>
+    
+    <div id="navContainer">
+        <div class="menuContainer">
+            <div id="menuBarsContainer" onClick="toggleMenu(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+        </div>
+    
+        <nav id="mainNav">
+            <div>
+                <a href="./show-reviews">Reviews</a>
+                <a href="/show-categories">Categories</a>
+                <a href="/show-tags">Tags</a>
+            </div>
+        </nav>
     </div>
+
 </body>
 </html>
