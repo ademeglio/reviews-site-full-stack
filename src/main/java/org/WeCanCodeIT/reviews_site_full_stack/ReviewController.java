@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import javax.annotation.Resource;
 
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -104,9 +105,9 @@ public class ReviewController {
 			if (reviewResult.isPresent()) {
 				Review review = reviewResult.get();
 				
-				Optional<Tag> tag = tagRepo.findByName(tagName);  // TODO - Fix: when deleting duplicate tags, you get an error because it finds two by name
+				Optional<Tag> tag = tagRepo.findFirstByName(tagName);  // TODO - Fix: when deleting duplicate tags, you get an error because it finds two by name
 				
-				review.deleteTag(tag);
+				review.deleteTag(tag.get());
 				reviewRepo.save(review);
 			}
 			
