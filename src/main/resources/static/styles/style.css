@@ -1,29 +1,151 @@
+:root {
+    /* Color Variables */
+    --main-color1: rgb(255,255,255);
+    --main-color2: rgb(35,35,35);
+   
+
+}
+
 * {
-    font-family: Helvetica, Arial, sans-serif;
-}
-.center {
-    margin: auto;
-    width: 80%;
-}
-h1,h2 {
-    color: black;
-    width: 90%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.618em;
+    
+    color: var(--main-color2);
 }
 
-p,ul {
-    color: rgb(35, 35, 35);
+/* ELEMENTS */
+html {
+    background: var(--main-color1);
+    font-size: 1.618vw;
 }
 
-footer {
-    font-size: 75%;
-    text-align: center;
+h1,h2,h3,h4 {
+    font-family: 'Raleway', sans-serif;
 }
 
 img {
     display: block;
     padding: 10px;
+    width: 100%
 }
 
-p.center {
+main {
+    margin-top: 3em;
+}
+
+footer {
     text-align: center;
 }
+
+/* CONTAINERS */
+.container {
+    width: 75%;
+    margin: auto;
+}
+
+/* GENERIC CLASSES */
+
+.center {
+    margin: auto;
+}
+
+
+
+/* NAV MENU */
+#navContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: fixed;
+
+    top: 0;
+    right:0;
+
+    width: 100%;
+    height: 3em;
+    margin: 0 auto;
+    background: var(--main-color2);
+}
+
+.menuContainer {
+    cursor: pointer;
+    padding-right: 0;
+    text-align: right;
+    width: 100%;
+    height: 2em;
+}
+
+.menuBarsContainer {
+    display: inline-block;
+    padding-right: 5px;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 25px;
+    height: 2px;
+    background-color: white;
+    margin: 6px 0;
+    transition: 0.4s; 
+}
+
+#mainNav {
+    height: 0;
+    overflow: hidden;
+    width: 100%;
+    border: .5px solid var(--main-color2);
+    box-shadow: 0 0 1px var(--main-color2);
+    padding-top: 2px;
+    position: absolute;
+    top: 2.8em;
+    transition: .5s;
+}
+
+#mainNav > div{
+    width: 100%;
+    background: var(--main-color1);
+    box-shadow: 0 0 1px var(--main-color2);
+
+}
+
+#mainNav a {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    
+    background: var(--main-color1);
+    border: .5px solid var(--main-color2);
+    box-shadow: 0 0 1px var(--main-color2) inset;
+    padding: 1em;
+}
+
+#mainNav a:visited {
+    text-decoration: none;
+}
+
+/* OPEN MENU FUNCTIONALITY */
+.show .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-4px, 6px);
+}
+
+.show .bar2 {opacity: 0;}
+
+.show .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-5px, -8px);
+}
+
+.show #main-nav > div{
+    height:20em;
+}
+
+
+
+
+
+
+
