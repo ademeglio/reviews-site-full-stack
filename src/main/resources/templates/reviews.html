@@ -26,8 +26,8 @@
 
                 <p>
                     As I got older, I had less time time to work on cars but still enjoyed cars and had gotten into <a href="https://en.wikipedia.org/wiki/Autocross" target="_blank" >autocrossing</a>. 
-                    It was sometime during my senior year of college one of my car magazines introduced me to a small company in <em>Wareham, MA</em> called <Strong>Factory Five Racing</Strong>. They are a component car manufacturer (AKA Kit Car) that make several different
-                    model cars that are replicas of older cars, such as the classic Cobra, or original designs. The itch was there for many years before I was finally able to put aside some funds to purchased a Factory Five Racing 818C to build for myself and I can't wait to start construction! The 818C is an original design based around using a Subaru Impreza as the donor.
+                    It was sometime during my senior year of college one of my car magazines introduced me to a small company in <em>Wareham, MA</em> called Factory Five Racing. They are a component car manufacturer (AKA Kit Car) that make several different model cars that are replicas of older cars, such as 
+                    the classic Cobra, or original designs. The itch was there for many years before I was finally able to put aside some funds to purchased a Factory Five Racing 818C to build for myself and I can't wait to start construction! The 818C is an original design based around using a Subaru Impreza as the donor.
                 </p>
 
                 <figure>
@@ -44,7 +44,7 @@
                 <h2>Below are some reviews of Kit Car Companies based in the United States.</h2>
             </section>
             
-            <section id="reviewList" th:each ="review: ${reviews}">
+            <section id="reviewList" th:each ="review: ${reviews}">                                 <!-- TODO CHANGE TO GRID OR FLEXBOX -->
                 <ul>
                     <li>
                         <a th:href="@{/review(id=${review.id})}" th:text="${review.title}"></a>
@@ -75,7 +75,7 @@
             <small>&copy; 2018 Anthony J. DeMeglio </small>
         </footer>
 
-    </div> <!--Close Container-->
+    </div> <!--End Container-->
     <script src="../script.js" th:href="@{/script.js}"></script>
 </body>
 </html>
