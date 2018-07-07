@@ -14,6 +14,8 @@
         [ ] In the ReviewController(), the method is giving a cautionary error. Ignore or fix?
         [ ] If you happen to have two tags of the same name, the delete fails
   [ ] In desktop max view, force size down. Go to default sizes?
+  [ ] Improve the design so that the links to review details are images instead of boring list. Use
+  Grid or FlexBox to arrange the images so that they align properly when resized.
  
 
 ## Overview
