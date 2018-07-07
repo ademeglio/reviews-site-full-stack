@@ -2,7 +2,14 @@
 ## My Notes
 
   * Review Kit Car Companies. Picked three manufactures to look at
-   
+
+### To Do
+  [ ] Fix broken image for tag at the bottom of review detail.
+  [ ] Look at notes from scratch document
+  [ ] Menu should be on the right side
+  [ ] jscript not working? Clicking outside of menu should collapse menu
+  [ ] Ask Aaron about calling Jscript in Thyme Leaf. I had trouble with that and with the CSS file.
+  [ ] In desktop max view, force size down. Go to default sizes?
  
 
 ## Overview
