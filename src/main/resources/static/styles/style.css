@@ -20,7 +20,7 @@
 /* ELEMENTS */
 html {
     background: var(--main-color1);
-    font-size: 1.618vw;
+    font-size: 1vw;
 }
 
 h1,h2,h3,h4 {
@@ -30,7 +30,7 @@ h1,h2,h3,h4 {
 img {
     display: block;
     padding: 10px;
-    width: 100%
+    width: 80%
 }
 
 main {
