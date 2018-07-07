@@ -7,27 +7,28 @@
 </head>
 
 <body>
-   <main class="center">
+    <div class="container">
+        <main class="center">
 
-        <h1>Review Tags</h1>
+            <h1>Review Tags</h1>
 
-        <section id="intro">
-            <p>
-               Below is a list of tags that our reviews can be associated with.
-            </p>
-        </section>
-        
-        <section th:each ="tag: ${tags}">
-            <ul>
-                <li>
-                    <a th:href="@{/tag(id=${tag.id})}" th:text="${tag.name}"></a>
-                </li>
-            </ul>
-        </section>
+            <section id="intro">
+                <p>
+                Below is a list of tags that our reviews can be associated with.
+                </p>
+            </section>
+            
+            <section th:each ="tag: ${tags}">
+                <ul>
+                    <li>
+                        <a th:href="@{/tag(id=${tag.id})}" th:text="${tag.name}"></a>
+                    </li>
+                </ul>
+            </section>
 
-    </main>
+        </main>
 
-    <div id="navContainer">
+        <div id="navContainer">
             <div class="menuContainer">
                 <div id="menuBarsContainer" onClick="toggleMenu(this)">
                     <div class="bar1"></div>
@@ -44,11 +45,11 @@
                 </div>
             </nav>
         </div>
-        
+            
         <footer class="center">
             <p>&copy; 2018 Anthony J. DeMeglio </p>
         </footer>
 
-
+    </div> <!--Close Container-->
 </body>
 </html>

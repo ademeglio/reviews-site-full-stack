@@ -7,64 +7,64 @@
 </head>
 
 <body>
-    <main class="center">
-   
-        <h1>U.S. Kit Car Company Reviews</h1>
+    <div class="container">
+        <main class="center">
+            <h1>U.S. Kit Car Company Reviews</h1>
 
-        <section id="intro">
-            <p>
-                I've been tooling around with cars since before I could drive. My brother and I used to try to take apart engines 
-                and help our dad with car repairs. When we finally got our licenses, we would do all repairs to our cars ourselves and of course 
-                modify them to upgrade their perfomance. It was something to do with our friends and it saved us a ton of money in the 
-                process.
-            </p>
+            <section id="intro">
+                <p>
+                    I've been tooling around with cars since before I could drive. My brother and I used to try to take apart engines 
+                    and help our dad with car repairs. When we finally got our licenses, we would do all repairs to our cars ourselves and of course 
+                    modify them to upgrade their perfomance. It was something to do with our friends and it saved us a ton of money in the 
+                    process.
+                </p>
 
-            <p>
-                As I got older, I had less time time to work on cars but still enjoyed cars and had gotten into <a href="https://en.wikipedia.org/wiki/Autocross" target="_blank" >autocrossing</a>. 
-                It was sometime during my senior year of college one of my car magazines introduced me to a small company in <em>Wareham, MA</em> called <Strong>Factory Five Racing</Strong>. They are a component car manufacturer (AKA Kit Car) that make several different
-                model cars that are replicas of older cars, such as the classic Cobra, or original designs. The itch was there for many years before I was finally able to put aside some funds to purchased a Factory Five Racing 818C to build for myself and I can't wait to start construction! The 818C is an original design based around using a Subaru Impreza as the donor.
-            </p>
-            <img class="center" id="coverImage" src="./images/818c.jpeg"/>
-            <p>
-                Not all Kit Car companies are the same but the concept is. Kits are based on using either multiple donor sources or single donor source for key components such as engine and drive train.  These are used in conjunction with a specially designed and built frame along with other custom components. In addition, body panels are pre-fabricated. You get the parts and you get to put it all together
-                and customize the car to your own style and performace. If you aren't into building, there are companies that can build the car to
-                your liking and you can still have a custom one of a kind car for your collection.
-            </p>
+                <p>
+                    As I got older, I had less time time to work on cars but still enjoyed cars and had gotten into <a href="https://en.wikipedia.org/wiki/Autocross" target="_blank" >autocrossing</a>. 
+                    It was sometime during my senior year of college one of my car magazines introduced me to a small company in <em>Wareham, MA</em> called <Strong>Factory Five Racing</Strong>. They are a component car manufacturer (AKA Kit Car) that make several different
+                    model cars that are replicas of older cars, such as the classic Cobra, or original designs. The itch was there for many years before I was finally able to put aside some funds to purchased a Factory Five Racing 818C to build for myself and I can't wait to start construction! The 818C is an original design based around using a Subaru Impreza as the donor.
+                </p>
+                <img class="center" id="coverImage" src="./images/818c.jpeg"/>
+                <p>
+                    Not all Kit Car companies are the same but the concept is. Kits are based on using either multiple donor sources or single donor source for key components such as engine and drive train.  These are used in conjunction with a specially designed and built frame along with other custom components. In addition, body panels are pre-fabricated. You get the parts and you get to put it all together
+                    and customize the car to your own style and performace. If you aren't into building, there are companies that can build the car to
+                    your liking and you can still have a custom one of a kind car for your collection.
+                </p>
 
-            <h2>Below are some reviews of Kit Car Companies based in the United States.</h2>
-        </section>
-        
-        <section id="reviewList" th:each ="review: ${reviews}">
-            <ul>
-                <li>
-                    <a th:href="@{/review(id=${review.id})}" th:text="${review.title}"></a>
-                </li>
-            </ul>
-        </section>
-        
-    </main>
+                <h2>Below are some reviews of Kit Car Companies based in the United States.</h2>
+            </section>
+            
+            <section id="reviewList" th:each ="review: ${reviews}">
+                <ul>
+                    <li>
+                        <a th:href="@{/review(id=${review.id})}" th:text="${review.title}"></a>
+                    </li>
+                </ul>
+            </section>
+        </main>
 
-    <div id="navContainer">
-        <div class="menuContainer">
-            <div id="menuBarsContainer" onClick="toggleMenu(this)">
-                <div class="bar1"></div>
-                <div class="bar2"></div>
-                <div class="bar3"></div>
+        <div id="navContainer">
+            <div class="menuContainer">
+                <div id="menuBarsContainer" onClick="toggleMenu(this)">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
             </div>
+
+            <nav id="mainNav">
+                <div>
+                    <a href="./show-reviews">Reviews</a>
+                    <a href="/show-categories">Categories</a>
+                    <a href="/show-tags">Tags</a>
+                </div>
+            </nav>
         </div>
 
-        <nav id="mainNav">
-            <div>
-                <a href="./show-reviews">Reviews</a>
-                <a href="/show-categories">Categories</a>
-                <a href="/show-tags">Tags</a>
-            </div>
-        </nav>
-    </div>
+        <footer class="center">
+            <p>&copy; 2018 Anthony J. DeMeglio </p>
+        </footer>
 
-    <footer class="center">
-        <p>&copy; 2018 Anthony J. DeMeglio </p>
-    </footer>
-    
+    </div> <!--Close Container-->
 </body>
 </html>
