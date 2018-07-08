@@ -13,11 +13,11 @@
       _it turns out I had it in the right spot, but we fixed the call to the source. I did not need_
       _any other Thyme reference, just put the file in the static folder._
       * The delete method seems to work but:
-        [x] If you happen to have two tags of the same name, the delete fails _we changed the code in Review() so that_
+        * [x] If you happen to have two tags of the same name, the delete fails _we changed the code in Review() so that_
         _deleteTag() did not use an optional and ReviewController().findFirstByName(tagName) instead of .findByName(tagName)._
   * [x] In desktop max view, force size down. Go to default sizes? _yes and set different styles depending on device._
   * [x] Improve the design so that the links to review details are images instead of boring list. Use
-  ~Grid~ or FlexBox to arrange the images so that they align properly when resized.
+  ~Grid or~ FlexBox to arrange the images so that they align properly when resized.
  
 
 ## Overview
