@@ -85,7 +85,7 @@ public class Review {
 		this.tags.add(tag);
 	}
 	
-	public void deleteTag(Tag tag) {  //  TODO Is this correct
+	public void deleteTag(Tag tag) { 
 		this.tags.remove(tag);
 	}
 	

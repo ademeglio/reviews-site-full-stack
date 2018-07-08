@@ -105,7 +105,7 @@ public class ReviewController {
 			if (reviewResult.isPresent()) {
 				Review review = reviewResult.get();
 				
-				Optional<Tag> tag = tagRepo.findFirstByName(tagName);  // TODO - Fix: when deleting duplicate tags, you get an error because it finds two by name
+				Optional<Tag> tag = tagRepo.findFirstByName(tagName);
 				
 				review.deleteTag(tag.get());
 				reviewRepo.save(review);
