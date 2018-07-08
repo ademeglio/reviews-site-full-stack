@@ -163,10 +163,12 @@ footer {
 }
 
 #gridContainer {
-    display: inline-flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 5px;
+    /* flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: center; */
 }
 
 .grid-item-2 {
@@ -206,6 +208,7 @@ footer {
 #tagsTitle {
     display: flex;
     margin-right: .75em;
+    align-items: center;
 }
 .icon-tags {
     padding-right: .5em;
@@ -260,6 +263,10 @@ footer {
         width: 85%;
     }
 
+    #gridContainer {
+        grid-template-columns: 1fr;
+    }
+
     /* Mobile Nav Menu */
     #mainNav {
         font-size: 4vw;
@@ -280,6 +287,10 @@ footer {
   
     .container {
         width: 85%;
+    }
+
+    #gridContainer {
+        grid-template-columns: 1fr;
     }
 
     /* Tablet Nav Menu */
