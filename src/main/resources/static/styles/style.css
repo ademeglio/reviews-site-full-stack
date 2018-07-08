@@ -141,6 +141,20 @@ footer {
     height:20em;
 }
 
+/* SHOW-REVIEWS PAGE */
+#coverFigure {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
+
+#coverFigure figcaption {
+    text-align: center;
+    position: relative;
+    top: -25px;
+}
+
+
 /* REVIEW DETAIL PAGE */
 #tagsContainer {
     display: flex;
