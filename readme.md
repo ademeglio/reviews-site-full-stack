@@ -4,19 +4,19 @@
   * Review Kit Car Companies. Picked three manufactures to look at 
 
 ### To Do
-  [x] Fix broken image for tag at the bottom of review detail. _changed to svg_
-  [x] Look at notes from scratch document _scratch document notes added below_
-  [x] Menu should be on the right side _Removed the width for .menuContainer_
-  [x] jscript not working? _Works, feature I thought I had, I actually hadn't done_
+  * [x] Fix broken image for tag at the bottom of review detail. _changed to svg_
+  * [x] Look at notes from scratch document _scratch document notes added below_
+  * [x] Menu should be on the right side _Removed the width for .menuContainer_
+  * [x] jscript not working? _Works, feature I thought I had, I actually hadn't done_
   * Ask Aaron:
-      [x] about calling Jscript in Thyme Leaf. I had trouble with that and with the CSS file. _False alarm_
+      * [x] about calling Jscript in Thyme Leaf. I had trouble with that and with the CSS file. _False alarm_
       _it turns out I had it in the right spot, but we fixed the call to the source. I did not need_
       _any other Thyme reference, just put the file in the static folder._
       * The delete method seems to work but:
         [x] If you happen to have two tags of the same name, the delete fails _we changed the code in Review() so that_
         _deleteTag() did not use an optional and ReviewController().findFirstByName(tagName) instead of .findByName(tagName)._
-  [x] In desktop max view, force size down. Go to default sizes? _yes and set different styles depending on device._
-  [x] Improve the design so that the links to review details are images instead of boring list. Use
+  * [x] In desktop max view, force size down. Go to default sizes? _yes and set different styles depending on device._
+  * [x] Improve the design so that the links to review details are images instead of boring list. Use
   ~Grid~ or FlexBox to arrange the images so that they align properly when resized.
  
 
