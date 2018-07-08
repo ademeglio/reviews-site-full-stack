@@ -2,8 +2,6 @@
     /* Color Variables */
     --main-color1: rgb(255,255,255);
     --main-color2: rgb(35,35,35);
-   
-
 }
 
 * {
@@ -20,7 +18,7 @@
 /* ELEMENTS */
 html {
     background: var(--main-color1);
-    font-size: 1vw;
+    font-size: 1.5vw;
 }
 
 h1,h2,h3,h4 {
@@ -143,19 +141,75 @@ footer {
     height:20em;
 }
 
+/* REVIEW DETAIL PAGE */
+#tagsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#tagsTitle {
+    display: flex;
+    margin-right: .75em;
+}
+.icon-tags {
+    padding-right: .5em;
+}
+
+#tagsLine p strong a {
+    text-decoration: none;
+}
+
+#tagsTitle strong a:hover {
+    text-decoration: underline;
+}
+
+#tagsLine {
+    display:
+}
+#tagsLine p span a {
+    border: 1px solid black;
+    padding: 1px 5px;
+    margin: 2px;
+    display: inline-flex;
+    text-decoration: none;
+}
+
+#tagsLine p span a:visited,
+#tagsTitle strong a:visited {
+    text-decoration: none;
+}
+
+#tagsLine span a:hover {
+    box-shadow: 0px 0px 5px 0.5px black inset;
+}
+
+#tagForms {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    width: 80%;
+    margin: auto;
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+
 /* MOBILE STYLES */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 650px) {
 
     html {
         font-size: 3.1vw;
     }
 
     p {
-        font-size: 4.2vw;
+        font-size: 3.5vw;
     }
-    
+    .container {
+        width: 85%;
+    }
+
     /* Mobile Nav Menu */
-    #main-nav {
+    #mainNav {
         font-size: 4vw;
         width: 100%;
         top: 2em;
@@ -163,12 +217,12 @@ footer {
 }
 
 /* TABLET STYLES */
-@media only screen and (min-width: 601px) and (max-width: 1024px) {
+@media only screen and (min-width: 651px) and (max-width: 1024px) {
     /*body {
         background-color: var(--test-bg-color2);
     }*/
     html {
-        font-size: 2.05vw;
+        font-size: 2.5vw;
     }
 
   
@@ -177,16 +231,16 @@ footer {
     }
 
     /* Tablet Nav Menu */
-    #nav-container {
+    #navContainer {
       height: 2.5em;
     }
 
-    .menu-container {
+    .menuContainer {
         height: 2em;
         padding-right: .5em;
     }
 
-    #main-nav {
+    #mainNav {
         top: 2.25em;
         width: 25%;
         right: .5em;
@@ -194,9 +248,28 @@ footer {
     }
 }
 
+/* DESKTOP STYLES */
+@media only screen and (min-width: 1025px) {
+   
+    html {
+        font-size: 1.5vw;
+    }
 
+  
+    /* Desktop Nav Menu */
+    #navContainer {
+      height: 2.5em;
+    }
 
+    .menuContainer {
+        height: 2em;
+        padding-right: .5em;
+    }
 
-
-
-
+    #mainNav {
+        top: 2.25em;
+        width: 25%;
+        right: .5em;
+      
+    }
+}
