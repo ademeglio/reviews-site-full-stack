@@ -14,6 +14,8 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Review {
@@ -32,9 +34,11 @@ public class Review {
 	
 	private String companyUrl; // Web site of company being reviewed
 	
+	@JsonIgnore
 	@ManyToOne
 	private Category category; // Review category
 	
+	@JsonIgnore
 	@ManyToMany
 	private Collection<Tag>	tags;
 

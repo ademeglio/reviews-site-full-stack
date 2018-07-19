@@ -201,7 +201,7 @@ footer {
 /* REVIEW DETAIL PAGE */
 #tagsContainer {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
 }
 
@@ -222,7 +222,11 @@ footer {
     text-decoration: underline;
 }
 
-#tagsLine p span a {
+#tagsList {
+    display: flex;
+}
+
+#tagsList p a {
     border: 1px solid black;
     padding: 1px 5px;
     margin: 2px;
@@ -230,12 +234,12 @@ footer {
     text-decoration: none;
 }
 
-#tagsLine p span a:visited,
+#tagsList p a:visited,
 #tagsTitle strong a:visited {
     text-decoration: none;
 }
 
-#tagsLine span a:hover {
+#tagsList a:hover {
     box-shadow: 0px 0px 5px 0.5px black inset;
 }
 

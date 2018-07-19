@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Category {
 
@@ -22,6 +24,7 @@ public class Category {
     @Lob
 	private String description;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "category")
 	private Collection<Review> reviews;
 
