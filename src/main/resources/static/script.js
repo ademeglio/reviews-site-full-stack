@@ -44,13 +44,22 @@
 
 
     // Add New Tag
-    function addTag(reviewId, tagName) { 
-
-        const addNewTag = JSON.stringify({
-            reviewId,
+    
+    function addTag(event) { 
+        event.preventDefault();
+        console.log(event);
+        
+        const tagName = event.target.querySelector('[name=tagName]').value;
+        const reviewId = event.target.querySelector('[name=reviewId]').value;
+        console.log({
+            reviewId: +reviewId,
             tagName,
         });
-
+        const addNewTag = JSON.stringify({
+            reviewId: +reviewId,
+            tagName,
+        });
+        const xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
             if(this.readyState == 4 && this.status == 200) {
                 // When Finished, update and re-render
@@ -60,7 +69,7 @@
 
             }
         };
-        xhr.open('PUT', './review/' + reviewId + '/add-new-tag/' + tagName)
+        xhr.open('PUT', './review/add-new-tag');
         xhr.setRequestHeader(
             'Content-Type',
             'application/json;charset=UTF-8'

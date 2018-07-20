@@ -46,7 +46,8 @@
                 </div>
                 <div id="tagForms">
                     <!-- Form to add newly created tags to a review -->
-                    <form method="POST" action="/new-tag">
+
+                    <form id="add-new-tag"  onsubmit="addTag(event)">
                         <input type="text" name="tagName" placeholder="Enter New Tag" />
                         <input type="hidden" name="reviewId" th:value="${review.id}" />
                         <input type="submit" value="Create &amp; Add Tag" />
