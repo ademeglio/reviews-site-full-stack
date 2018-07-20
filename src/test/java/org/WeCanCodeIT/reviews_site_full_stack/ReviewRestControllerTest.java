@@ -26,5 +26,12 @@ public class ReviewRestControllerTest {
 		HttpStatus status = response.getStatusCode();
 		assertThat(status, is(HttpStatus.OK));
 	}
+	
+	@Test
+	public void shouldBeOkForAddNewTag() {
+		ResponseEntity<String> response = restTemplate.postForEntity("/review/8/add-new-tag/'sports car'", null, String.class);
+		HttpStatus status = response.getStatusCode();
+		assertThat(status, is(HttpStatus.OK));
+	}
 
 }

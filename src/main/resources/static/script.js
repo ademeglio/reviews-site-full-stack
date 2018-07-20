@@ -42,6 +42,33 @@
         xhr.send();
     }
 
+
+    // Add New Tag
+    function addTag(reviewId, tagName) { 
+
+        const addNewTag = JSON.stringify({
+            reviewId,
+            tagName,
+        });
+
+        xhr.onreadystatechange = function() {
+            if(this.readyState == 4 && this.status == 200) {
+                // When Finished, update and re-render
+                tagItems = JSON.parse(xhr.response);
+                console.log(tagItems);
+                renderTags(tagItems);
+
+            }
+        };
+        xhr.open('PUT', './review/' + reviewId + '/add-new-tag/' + tagName)
+        xhr.setRequestHeader(
+            'Content-Type',
+            'application/json;charset=UTF-8'
+        );
+        xhr.send(addNewTag);
+    }
+
+    // Render Tags onto review
     function renderTags(tagItems) {
         // Get container and clear it
         const tagsListDiv = document.querySelector('#tagsList');
