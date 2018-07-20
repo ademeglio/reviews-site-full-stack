@@ -25,7 +25,8 @@
 
     // Get a list of tags for a review with AJAX
     let tagItems = [];
-
+    let reviewId = document.querySelector('#reviewId').textContent;
+    console.log("Review ID: " + reviewId);
     getItems();
 
     function getItems() {
@@ -33,15 +34,15 @@
         xhr.onreadystatechange = function() {
             if(this.readyState == 4 && this.status == 200) {
                 const tagItems = JSON.parse(xhr.response);
-       
-                render(tagItems);
+                console.log(tagItems);
+                renderTags(tagItems);
             }
         };
-        xhr.open('GET', 'http://localhost:8080/review/tags', true);
+        xhr.open('GET', './review/' + reviewId + '/tags', true);
         xhr.send();
     }
 
-    function render(tagItems) {
+    function renderTags(tagItems) {
         // Get container and clear it
         const tagsListDiv = document.querySelector('#tagsList');
         tagsListDiv.innerHTML = '';

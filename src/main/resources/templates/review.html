@@ -23,6 +23,7 @@
             <section th:each="review: ${reviews}">
                 <h2 th:text="${review.title}"></h2>
                 <p th:text="${review.content}"></p>
+                <span id="reviewId" style="display:none" th:text="${review.id}"></span> <!--Reference for AJAX -->
                 <a th:href="@{${review.CompanyUrl}}"><span th:text="${review.CompanyUrl}" /></a>
                 <img class="center" th:src="@{${review.ImageUrl}}" />
                 <p><strong>Category:</strong>
@@ -35,7 +36,7 @@
                         </svg>
                         <strong><a href="/show-tags">Tags: </a></strong>
                     </div>
-                    <div id="tagsList">
+                    <div id="tagsList" th:each="tag: ${review.tags}">
                         <!-- <p>
                             <span th:each="tag: ${review.tags}">
                                 <a th:href="@{/tag(id=${tag.id})}" th:text="' ' + ${tag.name}"></a>
