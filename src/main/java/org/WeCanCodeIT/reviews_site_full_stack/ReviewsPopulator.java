@@ -40,7 +40,7 @@ public class ReviewsPopulator implements CommandLineRunner {
 		Tag componentCar = tagRepo.save(new Tag("component car"));
 		Tag midEngine = tagRepo.save(new Tag("mid-engine"));
 		Tag vintageDesign = tagRepo.save(new Tag("vintage design"));
-		Tag superCar = tagRepo.save(new Tag("super-car"));
+		
 		
 		// Create Reviews
 		Review factoryFiveRacingGTM = reviewRepo.save(new Review("Factory Five Racing GTM",
@@ -52,7 +52,7 @@ public class ReviewsPopulator implements CommandLineRunner {
 				+ "metus varius luctus. Vestibulum tincidunt dui ut vehicula maximus. Duis at est id lectus finibus maximus.",
 				"https://www.factoryfive.com", // Company URL
 				kitVehicle, // Category
-				sportsCar, componentCar, handBuilt, midEngine, superCar)); // Tags
+				sportsCar, componentCar, handBuilt, midEngine)); // Tags
 		
 		Review sterlingSportsCarsNova = reviewRepo.save(new Review("Sterling Sports Cars Nova",
 				"/images/Sterling-Nova.jpg", // image location
