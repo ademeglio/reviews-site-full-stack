@@ -56,7 +56,7 @@ public class ReviewRestControllerTest {
 		assertThat(status, is(HttpStatus.OK));
 	}
 	
-	@Test //THIS NEEDS ASSISTANCE FROM AARON!!!
+	@Test 																						//THIS NEEDS ASSISTANCE FROM AARON!!!
 	public void shouldBeOkForRemoveTagFromReview() throws URISyntaxException {
 		// URI for request
 		URI deleteUri = new URI("/review/removetag");
@@ -65,12 +65,13 @@ public class ReviewRestControllerTest {
 		String json = "{\"reviewId\":\"8\", \"tagName\":\"sports-car\"}";
 				
 		// Build Request out of URI and form
-		RequestEntity<String> request = 
+		RequestEntity<Void> request = 
 				RequestEntity
 				.delete(deleteUri)
-				.header("Content-Type", "application/json")
+				//.header("Content-Type", "application/json")
 				.accept(MediaType.APPLICATION_JSON)
-				.body(json);
+				.build();
+				//.body(json);
 		
 		ResponseEntity<String> response = restTemplate.exchange(request, String.class);
 		
