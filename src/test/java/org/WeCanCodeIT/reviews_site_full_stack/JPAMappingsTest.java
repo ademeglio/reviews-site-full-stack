@@ -189,4 +189,9 @@ public class JPAMappingsTest {
 		assertThat(reviewsForTopic, containsInAnyOrder(review1, review2));
 	}
 	
+	// Comments Tests
+	
+	
+	
+	
 } // End JPAMappingsTest()
