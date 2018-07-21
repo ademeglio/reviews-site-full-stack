@@ -1,5 +1,6 @@
 package org.WeCanCodeIT.reviews_site_full_stack;
 
+import java.util.Collection;
 import java.util.Optional;
 
 import javax.annotation.Resource;
@@ -40,21 +41,24 @@ public class ReviewRestController {
 		
 		if (reviewOptional.isPresent()) {
 			Optional<Tag> tagOptional = tagRepo.findFirstByName(addNewTag.tagName);
+			Tag createdTag;
 			
 			// If the tag doesn't exist, create it.
 			if(!tagOptional.isPresent()) {
-				Tag createdTag = tagRepo.save(new Tag(addNewTag.tagName));
-				Review review = reviewOptional.get();
-				review.addTag(createdTag);
+				createdTag = tagRepo.save(new Tag(addNewTag.tagName));
+			} else {
+				createdTag = tagOptional.get();
+			}
+			
+			// The tag exists, just add it if it doesn't exist in the review.
+			Review review = reviewOptional.get();
+			Collection<Tag> reviewTags = review.getTags();
+			
+			if (!reviewTags.contains(createdTag)) {
+				reviewTags.add(createdTag);
 				reviewRepo.save(review);
 			}	
-//			else {
-//				// TODO Want to be able to add existing tag in if it has been deleted, but not multiple times!
-//				Tag existingTag = (Tag) tagRepo.findByName(addNewTag.tagName);
-//				Review review = reviewOptional.get();
-//				review.addTag(existingTag);
-//				reviewRepo.save(review);
-//			}
+
 		}
 		return tagRepo.findByReviews(reviewOptional);
 	}
