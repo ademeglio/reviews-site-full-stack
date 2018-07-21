@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import javax.annotation.Resource;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -22,7 +23,7 @@ public class ReviewRestController {
 	private TagRepository tagRepo;
 	
 	@GetMapping("/{id}/tags")
-	public Iterable<Tag> findALlTagsByReview(
+	public Iterable<Tag> findAllTagsByReview(
 			@PathVariable("id") Long reviewId) {
 		Optional<Review> review = reviewRepo.findById(reviewId);
 		return tagRepo.findByReviews(review);
@@ -47,10 +48,31 @@ public class ReviewRestController {
 				review.addTag(createdTag);
 				reviewRepo.save(review);
 			}	
+			else {
+				Tag existingTag = (Tag) tagRepo.findByName(addNewTag.tagName);
+				Review review = reviewOptional.get();
+				review.addTag(existingTag);
+				reviewRepo.save(review);
+			}
 		}
 		return tagRepo.findByReviews(reviewOptional);
 	}
 	
-	
-	
+	@DeleteMapping("/removetag")
+	public Iterable<Tag> removeTag (
+			@RequestBody TagUpdateRequest removeTag
+			){
+		Optional<Tag> tagOptional = tagRepo.findFirstByName(removeTag.tagName);
+		Tag tag = tagOptional.get();
+		Optional<Review> reviewOptional = reviewRepo.findById(removeTag.reviewId);
+		Review review = reviewOptional.get();
+		
+		try {
+			review.deleteTag(tag);
+			reviewRepo.save(review);
+		} catch (Exception e) {
+			// TODO: Report error if item didn't exist
+		}
+		return tagRepo.findByReviews(reviewOptional);
+	}
 } // End ReviewRestController()

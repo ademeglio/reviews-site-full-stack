@@ -36,7 +36,8 @@
                         </svg>
                         <strong><a href="/show-tags">Tags: </a></strong>
                     </div>
-                    <div id="tagsList" th:each="tag: ${review.tags}">
+                    <div id="tagsList">
+                        <!-- Contents Added by JS, below is original code -->
                         <!-- <p>
                             <span th:each="tag: ${review.tags}">
                                 <a th:href="@{/tag(id=${tag.id})}" th:text="' ' + ${tag.name}"></a>
@@ -54,13 +55,14 @@
                     </form>
 
                     <!-- Form to remove a tag from the review -->
-                    <form method="POST" action="/remove-tag-from-review">
+                    <!-- <form id="removetag" onsubmit="removeTag(event)">
                         <input type="text" name="tagName" placeholder="Enter Tag Name" />
                         <input type="hidden" name="reviewId" th:value="${review.id}" />
                         <input type="submit" value="Remove Tag" />
-                    </form>
+                    </form> -->
 
                 </div>
+                <p id="demo"></p>
             </section>
 
         </main>
