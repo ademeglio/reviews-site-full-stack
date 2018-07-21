@@ -48,12 +48,13 @@ public class ReviewRestController {
 				review.addTag(createdTag);
 				reviewRepo.save(review);
 			}	
-			else {
-				Tag existingTag = (Tag) tagRepo.findByName(addNewTag.tagName);
-				Review review = reviewOptional.get();
-				review.addTag(existingTag);
-				reviewRepo.save(review);
-			}
+//			else {
+//				// TODO Want to be able to add existing tag in if it has been deleted, but not multiple times!
+//				Tag existingTag = (Tag) tagRepo.findByName(addNewTag.tagName);
+//				Review review = reviewOptional.get();
+//				review.addTag(existingTag);
+//				reviewRepo.save(review);
+//			}
 		}
 		return tagRepo.findByReviews(reviewOptional);
 	}
