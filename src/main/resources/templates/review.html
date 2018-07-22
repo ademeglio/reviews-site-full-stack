@@ -22,13 +22,39 @@
 
             <section th:each="review: ${reviews}">
                 <h2 th:text="${review.title}"></h2>
-                <p th:text="${review.content}"></p>
-                <span id="reviewId" style="display:none" th:text="${review.id}"></span> <!--Reference for AJAX -->
-                <a th:href="@{${review.CompanyUrl}}"><span th:text="${review.CompanyUrl}" /></a>
-                <img class="center" th:src="@{${review.ImageUrl}}" />
-                <p><strong>Category:</strong>
-                   <a th:href="@{/category(id=${review.category.id})}" th:text="' '+ ${review.category.name}"></a>
-                </p>
+                <div id="reviewImage">
+                    <img class="center" th:src="@{${review.ImageUrl}}" />
+                </div>
+
+                <div id="reviewBody">
+                    
+                    <p th:text="${review.content}"></p>
+                    <span id="reviewId" style="display:none" th:text="${review.id}"></span> <!--Span is a Reference for AJAX -->
+                    <a th:href="@{${review.CompanyUrl}}"><span th:text="${review.CompanyUrl}" /></a>
+                </div>
+
+                <div id="categoryContainer">
+                    <span><strong>Category:</strong>
+                    <a th:href="@{/category(id=${review.category.id})}" th:text="' '+ ${review.category.name}"></a>
+                    </span>
+                    <div id="tagForms">
+                        <!-- Form to add newly created tags to a review -->
+    
+                        <form id="add-new-tag"  onsubmit="addTag(event)">
+                            <input type="text" name="tagName" placeholder="Enter New Tag" />
+                            <input type="hidden" name="reviewId" th:value="${review.id}" />
+                            <input type="submit" value="Create &amp; Add Tag" />
+                        </form>
+    
+                        <!-- Form to remove a tag from the review -->
+                        <!-- <form id="removetag" onsubmit="removeTag(event)">
+                            <input type="text" name="tagName" placeholder="Enter Tag Name" />
+                            <input type="hidden" name="reviewId" th:value="${review.id}" />
+                            <input type="submit" value="Remove Tag" />
+                        </form> -->
+    
+                    </div>
+                </div>
                 <div id="tagsContainer">
                     <div id="tagsTitle">
                         <svg class="icon-tags" xmlns="http://www.w3.org/2000/svg" width="30" height="28" viewBox="0 0 30 28" aria-hidden="true">
@@ -45,30 +71,34 @@
                         </p> -->
                     </div>
                 </div>
-                <div id="tagForms">
-                    <!-- Form to add newly created tags to a review -->
 
-                    <form id="add-new-tag"  onsubmit="addTag(event)">
-                        <input type="text" name="tagName" placeholder="Enter New Tag" />
-                        <input type="hidden" name="reviewId" th:value="${review.id}" />
-                        <input type="submit" value="Create &amp; Add Tag" />
-                    </form>
+                <div id="commentsContainer">
+                        <div id="commentsLabel">
+                            <strong>Comments:</strong>
+                        </div>
+                        <div id="commentForm">
+                            <!-- Form to add a comment to the review -->
+                            <form id="addComment" method="POST" action="/new-comment">
+                                <input type="text" name="commentContent" placeholder="Enter Comment" />
+                                <input type="text" name="commenter" placeholder="Enter Your Name" />
+                                <input type="hidden" name="id" th:value="${review.id}" />
+                                <input type="submit" value="Add Comment" />
+                            </form>
+                        </div>
 
-                    <!-- Form to remove a tag from the review -->
-                    <!-- <form id="removetag" onsubmit="removeTag(event)">
-                        <input type="text" name="tagName" placeholder="Enter Tag Name" />
-                        <input type="hidden" name="reviewId" th:value="${review.id}" />
-                        <input type="submit" value="Remove Tag" />
-                    </form> -->
-
+                        <div class="commentBox" th:each="comment: ${review.comments}">
+                            <em><p th:text="${comment.commentContent}"></p></em>
+                            <p th:text="'by: ' + ${comment.commenter}"></p>
+                        </div>
                 </div>
-                <p id="demo"></p>
+
             </section>
 
         </main>
         
         <div id="navContainer">
             <div class="menuContainer">
+                
                 <div id="menuBarsContainer" onClick="toggleMenu(this)">
                     <div class="bar1"></div>
                     <div class="bar2"></div>

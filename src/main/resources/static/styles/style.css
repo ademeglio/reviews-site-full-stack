@@ -48,6 +48,13 @@ footer {
     margin: auto;
 }
 
+#categoryContainer {
+    display: flex;
+    padding-bottom: 10px;
+    border-top: solid 1px;
+    margin-top: 10px;
+}
+
 /* GENERIC CLASSES */
 
 .center {
@@ -203,6 +210,9 @@ footer {
     display: flex;
     justify-content: left;
     align-items: center;
+    border-bottom: solid 1px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 #tagsTitle {
@@ -255,13 +265,38 @@ footer {
 }
 
 #tagForms {
-    display: flex;
-    flex-flow: row;
-    justify-content: space-evenly;
-    width: 80%;
-    margin: auto;
-    padding-top: .5em;
-    padding-bottom: .5em;
+    margin-left: 5em;
+}
+
+.commentBox {
+    border: solid 1px;
+    margin-top: 10px;
+    width: 84%;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.commentBox p {
+    padding-left: 10px;
+}
+
+#commentForm, 
+#commentsLabel {
+    display: inline;
+}
+
+#commentForm {
+    margin-left: 5%;
+}
+
+#addComment {
+   display:inline;
+   margin-right: 0;
+   margin-left: auto;
+}
+
+#addComment input[type="text"] {
+    width: 35%;
 }
 
 /* MOBILE STYLES */
