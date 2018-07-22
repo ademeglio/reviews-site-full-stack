@@ -17,6 +17,9 @@ public class ReviewsPopulator implements CommandLineRunner {
 	@Resource
 	private TagRepository tagRepo;
 	
+	@Resource
+	private CommentRepository commentRepo;
+	
 	@Override
 	public void run(String... args) throws Exception {
 		// Create Categories
@@ -75,6 +78,14 @@ public class ReviewsPopulator implements CommandLineRunner {
 				"http://stalkercars.com", // Company URL
 				replicaVehicle, // Category
 				componentCar, handBuilt, sportsCar, vintageDesign)); // Tags
-	}
+		
+		// Add some comments
+		Comment comment1 = commentRepo.save(new Comment("FFR Rocks!", "CBUS818", factoryFiveRacingGTM));
+		Comment comment2 = commentRepo.save(new Comment("Heck yah! That thing looks fast!", "someDude", factoryFiveRacingGTM));
+		Comment comment3 = commentRepo.save(new Comment("What the heck is that?!", "CBUS818", sterlingSportsCarsNova));
+		Comment comment4 = commentRepo.save(new Comment("That looks like fun!", "CBUS818", bruntonAutoStalkerV6Clubman));
+		
+		
+	} // End Run()
 	
-}
+} // End ReviewsPopulator()
