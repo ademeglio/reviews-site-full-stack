@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -41,6 +42,10 @@ public class Review {
 	@JsonIgnore
 	@ManyToMany
 	private Collection<Tag>	tags;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "review")
+	private Collection<Comment> comments;
 
 	//Constructor
 	protected Review() { } //JPA Default Constructor
@@ -83,6 +88,11 @@ public class Review {
 	public Collection<Tag> getTags() {
 		return tags;
 	}
+	
+	public Collection<Comment> getComments() {
+		return comments;
+	}
+
 
 	// Methods
 	public void addTag(Tag tag) {
@@ -118,11 +128,5 @@ public class Review {
 			return false;
 		return true;
 	}
-
-	
-
-	
-
-	
 
 }  // End Review()
