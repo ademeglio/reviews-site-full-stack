@@ -46,6 +46,10 @@ public class Comment {
 		return commentContent;
 	}
 	
+	public String getCommenter() {
+		return commenter;
+	}
+	
 	// hashCode() & equals() for entity id
 	@Override
 	public int hashCode() {
