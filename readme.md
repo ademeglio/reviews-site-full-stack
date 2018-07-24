@@ -4,11 +4,11 @@ You can create a new repository or use the same one. If you'd like to use the sa
 [Here](https://github.com/WeCanCodeIT/java-exercises/blob/master/reviews-site-iteration-3/rubric.md) lies the rubric.
 
 ## Review Tags
-- [ ] If you didn't include tags before, add them. These should have a many-to-many relationship with reviews.
+- [x] If you didn't include tags before, add them. These should have a many-to-many relationship with reviews.
 
-- [ ] Clicking on a tag should take the user to a page which displays the reviews associated with that tag.
+- [x] Clicking on a tag should take the user to a page which displays the reviews associated with that tag.
 
-- [ ] Using appropriate HTML elements and AJAX, allow the user to add and remove tags from reviews. Be careful not to create a new tag if a tag with that name already exists.
+- [x] Using appropriate HTML elements and AJAX, allow the user to add and remove tags from reviews. Be careful not to create a new tag if a tag with that name already exists.
 
 ## Review Comments
 - [x] Add comments to reviews. Comments should be listed on a review's page after the review's content.
