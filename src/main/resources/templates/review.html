@@ -94,7 +94,7 @@
 
                         <div class="commentBox" th:each="comment: ${review.comments}">
                             <em><p th:text="${comment.commentContent}"></p></em>
-                            <p th:text="'by: ' + ${comment.commenter}"></p>
+                            <p th:text="'by: ' + ${comment.commenter} + '    Date:'"></p>
                         </div>
                 </div>
 
