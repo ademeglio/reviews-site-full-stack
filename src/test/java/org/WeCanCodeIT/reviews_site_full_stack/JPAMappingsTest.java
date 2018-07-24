@@ -6,6 +6,7 @@ import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.assertThat;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.Optional;
 
 import javax.annotation.Resource;
@@ -35,7 +36,6 @@ public class JPAMappingsTest {
 	
 	@Resource
 	private CommentRepository commentRepo;
-	
 	
 	// Category Tests
 	
@@ -202,7 +202,7 @@ public class JPAMappingsTest {
 		Review review = reviewRepo.save(new Review("reviewTitle1", "reviewImageUrl",
 				"reviewContent", "reviewedCompanyUrl", replica));
 		
-		Comment comment = commentRepo.save(new Comment("user_comment", "commenter", review));
+		Comment comment = commentRepo.save(new Comment("user_comment", "commenter", review ));
 		long commentId = comment.getId();
 		
 		entityManager.flush();

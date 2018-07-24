@@ -37,7 +37,7 @@
                     </span>
 
                     <span>
-                        <strong>    Company Website:</strong>
+                        <strong>&nbsp;&nbsp;&nbsp;&nbsp;Company Website:</strong>
                         <a th:href="@{${review.CompanyUrl}}"><span th:text="${review.CompanyUrl}" /></a>
                     </span>
                     
@@ -93,8 +93,8 @@
                         </div>
 
                         <div class="commentBox" th:each="comment: ${review.comments}">
-                            <em><p th:text="${comment.commentContent}"></p></em>
-                            <p th:text="'by: ' + ${comment.commenter} + '    Date:'"></p>
+                            <em><p th:text="'&quot;' + ${comment.commentContent} + '&quot;'"></p></em>
+                            <p id=commentedByLine th:utext="'by: ' + ${comment.commenter} + '<em><small>[' + ${comment.timestamp} + ']</small></em>'"></p>
                         </div>
                 </div>
 

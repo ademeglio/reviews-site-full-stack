@@ -314,6 +314,10 @@ margin-left: auto;
     width: 35%;
 }
 
+#commentedByLine {
+	text-align: right;
+}
+
 /* MOBILE STYLES */
 @media only screen and (max-width: 650px) {
 

@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
+import java.time.Instant;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -27,6 +29,8 @@ public class Comment {
 	private Review review;
 
 	private String commenter; // Person authoring the comment
+
+	private Instant commentTimestamp = Instant.now(); // Defaulted Comment instant time stamp from Epoch.
 
 	// Constructors
 	protected Comment() {} // JPA Default Constructor
@@ -48,6 +52,10 @@ public class Comment {
 	
 	public String getCommenter() {
 		return commenter;
+	}
+	
+	public String getTimestamp() {
+		return commentTimestamp.toString();
 	}
 	
 	// hashCode() & equals() for entity id
