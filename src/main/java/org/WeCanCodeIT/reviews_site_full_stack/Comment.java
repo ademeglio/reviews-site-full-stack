@@ -1,58 +1,63 @@
 package org.WeCanCodeIT.reviews_site_full_stack;
 
-import java.util.Collection;
-
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
+
+import java.time.Instant;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Category {
+public class Comment {
 
+	// Instance Variables
 	@Id
 	@GeneratedValue
 	private long id;
-	private String name;
 	
 	@Basic(fetch=FetchType.LAZY)
-    @Lob
-	private String description;
+	@Lob
+	private String commentContent;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "category")
-	private Collection<Review> reviews;
+	@ManyToOne
+	private Review review;
+
+	private String commenter; // Person authoring the comment
+
+	private Instant commentTimestamp = Instant.now(); // Defaulted Comment instant time stamp from Epoch.
 
 	// Constructors
-	protected Category() {} //JPA Default Constructor
+	protected Comment() {} // JPA Default Constructor
 	
-	public Category(String name, String description) {
-		this.name = name;
-		this.description = description;
+	public Comment(String commentContent, String commenter, Review review) {
+		this.commentContent = commentContent;
+		this.commenter = commenter;
+		this.review = review;
 	}
 	
 	// Getters
-	public String getName() {
-		return name;
-	}
-	
-	public String getDescription() {
-		return description;
-	}
-	
 	public long getId() {
 		return id;
 	}
 	
-	public Collection<Review> getReviews() {
-		return reviews;
+	public String getCommentContent() {
+		return commentContent;
 	}
-
+	
+	public String getCommenter() {
+		return commenter;
+	}
+	
+	public String getTimestamp() {
+		return commentTimestamp.toString();
+	}
+	
 	// hashCode() & equals() for entity id
 	@Override
 	public int hashCode() {
@@ -70,13 +75,9 @@ public class Category {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Category other = (Category) obj;
+		Comment other = (Comment) obj;
 		if (id != other.id)
 			return false;
 		return true;
 	}
-
-
-	
-
-} // End Category()
+}

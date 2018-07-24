@@ -6,6 +6,7 @@ import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.assertThat;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.Optional;
 
 import javax.annotation.Resource;
@@ -33,6 +34,8 @@ public class JPAMappingsTest {
 	@Resource
 	private TagRepository tagRepo;
 	
+	@Resource
+	private CommentRepository commentRepo;
 	
 	// Category Tests
 	
@@ -187,6 +190,67 @@ public class JPAMappingsTest {
 		Collection<Review> reviewsForTopic = reviewRepo.findByTagsId(tagId);
 		
 		assertThat(reviewsForTopic, containsInAnyOrder(review1, review2));
+	}
+	
+	// Comments Tests
+	
+	@Test
+	public void shouldSaveAndLoadComment() {
+		// Need a category to add to review
+		Category replica = categoryRepo.save(new Category("replicas", "description"));
+		// Need a review to add comment to for testing
+		Review review = reviewRepo.save(new Review("reviewTitle1", "reviewImageUrl",
+				"reviewContent", "reviewedCompanyUrl", replica));
+		
+		Comment comment = commentRepo.save(new Comment("user_comment", "commenter", review ));
+		long commentId = comment.getId();
+		
+		entityManager.flush();
+		entityManager.clear();
+		
+		Optional<Comment> result = commentRepo.findById(commentId);
+		comment = result.get();
+		assertThat(comment.getCommentContent(), is("user_comment"));
+	}
+	
+	@Test
+	public void shouldGenerateCommentId() {
+		// Need a category to add to review
+		Category replica = categoryRepo.save(new Category("replicas", "description"));
+		// Need a review to add comment to for testing
+		Review review = reviewRepo.save(new Review("reviewTitle1", "reviewImageUrl",
+				"reviewContent", "reviewedCompanyUrl", replica));
+			
+		
+		Comment comment = commentRepo.save(new Comment("user_comment","commenter",review));
+		long commentId = comment.getId();
+		
+		entityManager.flush();
+		entityManager.clear();
+		
+		assertThat(commentId, is(greaterThan(0L)));
+	}
+	
+	@Test
+	public void shouldEstablishCommentToReviewRelationship() {
+		
+		Category replica = categoryRepo.save(new Category("replicas", "description"));
+		
+		Review review = reviewRepo.save(new Review("reviewTitle1", "reviewImageUrl",
+				"reviewContent", "reviewedCompanyUrl", replica));
+		
+		// Add comments to review
+		Comment comment1 = commentRepo.save(new Comment("user_comment1","commenter", review));
+		Comment comment2 = commentRepo.save(new Comment("user_comment2","commenter", review));
+		
+		long reviewId = review.getId();
+		
+		entityManager.flush();
+		entityManager.clear();
+		
+		Optional<Review> result = reviewRepo.findById(reviewId);
+		review = result.get();	
+		assertThat(review.getComments(), containsInAnyOrder(comment1,comment2));
 	}
 	
 } // End JPAMappingsTest()

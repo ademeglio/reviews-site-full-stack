@@ -23,6 +23,9 @@ public class ReviewController {
 	@Resource
 	TagRepository tagRepo;
 	
+	@Resource
+	CommentRepository commentRepo;
+	
 	
 	@RequestMapping("/review")
 	public String findOneReview(@RequestParam(value="id") Long reviewId, Model model) throws ReviewNotFoundException {
@@ -75,44 +78,68 @@ public class ReviewController {
 		return "tags";
 	}
 	
-	// Add a newly created tag directly to a specific review using a form.
-	@PostMapping("/new-tag")
-	public RedirectView createTagForReview(
-		@RequestParam(value="tagName") String tagName,
-		@RequestParam(value="reviewId") Long reviewId,
-		Model model) {
+	// Add a newly created comment directly to a specific review using an HTML form.
+	@PostMapping("/new-comment")
+	public RedirectView createCommentForReview(
+			@RequestParam(value="commentContent") String commentContent,
+			@RequestParam(value="commenter") String commenter,
+			@RequestParam(value="id") Long reviewId,
+			Model model) {
 		
-		Optional<Review> reviewResult = reviewRepo.findById(reviewId);
+		Optional<Review> reviewOptional = reviewRepo.findById(reviewId);
 		
-		if (reviewResult.isPresent()) {
-			Tag createdTag = tagRepo.save(new Tag(tagName));
-			Review review = reviewResult.get();
-			review.addTag(createdTag);
+		
+		if (reviewOptional.isPresent()) {
+			Review review = reviewOptional.get();
+			Comment createdComment = commentRepo.save(new Comment(commentContent, commenter, review));
 			reviewRepo.save(review);
 		}
-
 		return new RedirectView("/review?id=" + reviewId);
 	}
 	
-	@PostMapping("/remove-tag-from-review")
-	public RedirectView removeTagForReview(
-			@RequestParam(value="tagName") String tagName,
-			@RequestParam(value="reviewId") Long reviewId,
-			Model model) {
-			
-			Optional<Review> reviewResult = reviewRepo.findById(reviewId);
-			
-			if (reviewResult.isPresent()) {
-				Review review = reviewResult.get();
-				
-				Optional<Tag> tag = tagRepo.findFirstByName(tagName);
-				
-				review.deleteTag(tag.get());
-				reviewRepo.save(review);
-			}
-			
-			return new RedirectView("/review?id=" + reviewId);
-	}
+	/*
+	 * The PostMapping and DeleteMapping are from the second iteration where I used a form method to add and delete tags.
+	 * In the third iteration, adding and deleting of tags is performed using AJAX
+	 */
+	
+//	// Add a newly created tag directly to a specific review using a form.
+//	@PostMapping("/new-tag")
+//	public RedirectView createTagForReview(
+//		@RequestParam(value="tagName") String tagName,
+//		@RequestParam(value="reviewId") Long reviewId,
+//		Model model) {
+//		
+//		Optional<Review> reviewResult = reviewRepo.findById(reviewId);
+//		
+//		if (reviewResult.isPresent()) {
+//			Tag createdTag = tagRepo.save(new Tag(tagName));
+//			Review review = reviewResult.get();
+//			review.addTag(createdTag);
+//			reviewRepo.save(review);
+//		}
+//
+//		return new RedirectView("/review?id=" + reviewId);
+//	}
+//	
+//	@PostMapping("/remove-tag-from-review")
+//	public RedirectView removeTagForReview(
+//			@RequestParam(value="tagName") String tagName,
+//			@RequestParam(value="reviewId") Long reviewId,
+//			Model model) {
+//			
+//			Optional<Review> reviewResult = reviewRepo.findById(reviewId);
+//			
+//			if (reviewResult.isPresent()) {
+//				Review review = reviewResult.get();
+//				
+//				Optional<Tag> tag = tagRepo.findFirstByName(tagName);
+//				
+//				review.deleteTag(tag.get());
+//				reviewRepo.save(review);
+//			}
+//			
+//			return new RedirectView("/review?id=" + reviewId);
+//	}
 	
 	
 } // End ReviewController()
